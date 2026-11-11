@@ -1,0 +1,41 @@
+RVC Feature Injector
+Taketo
+
+1.1.9 修复 Cubase 启播前滚近静音覆写已捕获音频的问题。从停止时选定位置开始录入，之前的前滚不覆盖旧声音；位置之后的真实静音正常保留。播放中点击追加行为保持。Logo/About 显示版本和环境。
+1.1.9 prevents Cubase startup pre-roll from overwriting captured audio. Capture starts at the position selected while stopped; pre-roll before that position is excluded. Real silence after that position is still recorded. Arming while playing is unchanged. Click the logo for version and environment details.
+
+安装内容：VST3 插件、便携 Python/CUDA 运行库和 HuBERT/RMVPE 基础模型。不附带歌姬模型；请在插件中自行导入 .pth 和可选 .index 文件。新实例的 A/B 槽位为空。
+Installation includes the plugin, portable runtime and HuBERT/RMVPE base assets. No singer models are bundled. Import your own .pth and optional .index files; new A/B slots start empty.
+
+本产品只有 VST3 插件，没有独立运行的桌面应用。第一个目录安装的是插件必需的 RVC 推理运行库（约 8.6 GB），包含便携 Python、推理依赖、基础模型、配置和卸载器；不是仅放卸载器，也不是额外的独立软件。
+This product is a VST3 plug-in only, with no standalone application. The first directory contains its required RVC inference support (about 8.6 GB): portable Python, dependencies, base assets, configuration and uninstaller.
+
+VST3 默认安装到 C:\Program Files\Common Files\VST3；推理运行库默认安装到 C:\Program Files\Taketo\RvcFeatureInjector。两者均可更改。插件日志、临时文件与缓存由 Cubase 当前用户写入自己的 LocalAppData 专属目录。
+The default VST3 parent is C:\Program Files\Common Files\VST3; inference support defaults to C:\Program Files\Taketo\RvcFeatureInjector. Both can be changed. Cubase writes logs, temporary files and caches to the current user's private LocalAppData folder.
+
+请先关闭 Cubase 及其他使用本插件的软件。安装和卸载会请求 Windows 管理员权限，以写入系统 VST3 目录；不安装驱动、服务或全局 Python/CUDA/VC++ 运行库，不修改 PATH。旧版当前用户安装请先卸载，再安装本版。
+Close Cubase and other hosts first. Setup and uninstall request Windows administrator permission for the system VST3 folder. No driver, service, global Python/CUDA/VC++ installation or PATH change is made. Uninstall an old per-user installation before switching to this machine-wide edition.
+
+机器级 1.1.3 至 1.1.8（含 DIAG1）可直接运行 1.1.9 安装程序升级，无需先卸载。沿用原运行库和 VST3 位置，保留用户自行添加的文件。没有独立在线更新器。
+To upgrade machine-wide 1.1.3 through 1.1.8 (including DIAG1), run 1.1.9 Setup without uninstalling first. Reuse both existing directories; user-added files are preserved. There is no separate online updater.
+
+本版保留 1.1.5 的 SHA256 运行库复用：内容未变的文件不解压、不覆盖，缺失或损坏文件自动修复。约 8.6 GB 的读取校验仍需时间；本版是无分卷的单个完整离线 EXE，安装时无需下载依赖，不是只含改动的小补丁。
+This version retains 1.1.5's SHA256 runtime reuse: unchanged files are neither extracted nor overwritten; missing or damaged files are repaired. Reading about 8.6 GB still takes time. This release is one complete offline EXE with no external volumes or dependency downloads, not a small patch containing only changes.
+
+APPEND CAPTURE：定位 → APPEND CAPTURE → 播放 → 停止播放 → GENERATE；停止时自动结束录入，手动 STOP APPEND 仍可用。重叠部分覆盖；NEW CAPTURE 用于清空重录。捕获跨度最多240秒，含空洞；超限保留已有数据。捕获音频不会保存进宿主工程。
+APPEND CAPTURE: locate, APPEND CAPTURE, play, stop playback, GENERATE. Host stop ends recording automatically; STOP APPEND remains available. Overlapping audio is replaced; NEW CAPTURE starts over. The total timeline span is limited to 240 seconds, including gaps; out-of-range recording preserves existing audio. Captured audio is not saved in host project state.
+
+卸载会删除安装清单内的文件、插件专用日志和缓存，以及本程序的卸载条目。用户额外放入的文件会保留。
+Uninstall removes tracked files, managed logs/cache and this app's uninstall entry. Files you add yourself are preserved.
+
+不要将需要保留的文件放进专属 state 缓存目录。卸载前请关闭宿主；发现占用文件会安全中止，不会强制关闭宿主或预约重启删除。
+Do not store personal files in the disposable state directory. Locked files stop uninstall; hosts are never killed and reboot deletion is never scheduled.
+
+安装后在 Cubase 的 VST 插件管理器重新扫描，在音频轨道插入效果中选择 RVC Feature Injector。
+After installation, rescan in Cubase's VST Plug-in Manager and select RVC Feature Injector as an audio-track insert effect.
+
+若升级中途失败，请重新运行安装程序完成修复。失败升级会恢复旧文件清单；已覆盖的程序文件可能保留新版内容。
+Rerun Setup to repair an interrupted upgrade. The old inventory is restored; overwritten program files may retain their updated contents.
+
+安装目录需要约 8.6 GB 可用空间，建议预留 11 GB。只需保留单个 Setup.exe，无需任何 .bin 分卷。
+Installation uses about 8.6 GB; allow 11 GB of destination space. Only the single Setup.exe is needed; there are no .bin volumes.

@@ -1,0 +1,61 @@
+# Build and intermediate outputs
+build/
+dist/
+artifacts/
+.tools/
+.venv/
+.impeccable/
+
+# Internal session handoff notes
+PROJECT_CONTEXT.md
+
+# Legacy v1.0 ONNX prototype models & unused SDK
+models/
+third_party/
+
+# Python caches
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Compiled binaries and debug symbols
+*.exe
+*.dll
+*.vst3
+*.lib
+*.exp
+*.obj
+*.pdb
+*.ilk
+*.idb
+*.ipdb
+*.iobj
+
+# CMake / MSVC / VS local state
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+*.sln
+*.vcxproj*
+.vs/
+.vscode/
+
+# Archives, logs, and audio dumps
+*.zip
+*.zip.sha256
+*.7z
+*.tar
+*.tar.gz
+*.part*
+*.log
+*.wav
+*.flac
+*.mp3
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store

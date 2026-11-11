@@ -1,0 +1,16 @@
+LIBRARY "RvcFeatureInjector.vst3"
+EXPORTS
+    GetPluginFactory
+    InitDll
+    ExitDll
+    BundleEntry
+    BundleExit
+    RvcVst3_RenderUiPreviewPng
+    RvcVst3_VerifyNeuralCacheE2E
+    RvcVst3_VerifyUnloadedInitAndClearSlot
+    RvcVst3_VerifyOctaveShiftRoundtrip
+    RvcVst3_VerifyCaptureNonZeroTimelineAndGenerateAll
+    RvcVst3_VerifySixRealtimeDspKnobs
+    RvcVst3_VerifyAppendCaptureUi
+    RvcVst3_VerifyAppendAudio
+    RvcVst3_VerifyAppendReplay
